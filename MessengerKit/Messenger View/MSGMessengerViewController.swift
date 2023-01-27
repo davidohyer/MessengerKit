@@ -244,12 +244,12 @@ open class MSGMessengerViewController: UIViewController {
     
 }
 
-struct MessengerInputEvents : OptionSet {
-    let rawValue : UInt
+public struct MessengerInputEvents : OptionSet {
+    public let rawValue : UInt
 
-    static let secondaryActionTriggered = MessengerInputEvents(rawValue: 0x01000000)
+    public static let secondaryActionTriggered = MessengerInputEvents(rawValue: 0x01000000)
+    
+    public init(rawValue: UInt) {
+        self.rawValue = rawValue
+    }
 }
-
-//public extension UIControl.Event {
-//    var secondaryActionTriggered: UIControl.Event { return UIControl.Event(rawValue: 0b0001 << 24) }
-//}
