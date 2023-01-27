@@ -160,7 +160,8 @@ open class MSGMessengerViewController: UIViewController {
     
         messageInputView.addTarget(self, action: #selector(inputViewDidChange(inputView:)), for: .valueChanged)
         messageInputView.addTarget(self, action: #selector(inputViewPrimaryActionTriggered(inputView:)), for: .primaryActionTriggered)
-        messageInputView.addTarget(self, action: #selector(inputViewSecondaryActionTriggered(inputView:)), for: .applicationReserved)
+        let event = MessengerControlEvents.imageButtonAction.controlEvent
+        messageInputView.addTarget(self, action: #selector(inputViewImageActionTriggered(inputView:)), for: event)
     }
     
     open func setupCollectionView() {
@@ -191,7 +192,7 @@ open class MSGMessengerViewController: UIViewController {
     @objc open dynamic func inputViewDidChange(inputView: MSGInputView) { }
     
     @objc open dynamic func inputViewPrimaryActionTriggered(inputView: MSGInputView) { }
-    @objc open dynamic func inputViewSecondaryActionTriggered(inputView: MSGInputView) { }
+    @objc open dynamic func inputViewImageActionTriggered(inputView: MSGInputView) { }
     
     // MARK: - Keyboard
     
@@ -242,10 +243,25 @@ open class MSGMessengerViewController: UIViewController {
     
 }
 
+public enum MessengerControlEvents {
+    case imageButtonAction
+    
+    public var controlEvent: UIControl.Event {
+        UIControl.Event(rawValue: self.inputEvent)
+    }
+    
+    private var inputEvent: UInt {
+        switch self {
+        case .imageButtonAction:
+            return MessengerInputEvents.imageButtonActionTriggered.rawValue
+        }
+    }
+}
+
 public struct MessengerInputEvents : OptionSet {
     public let rawValue : UInt
 
-    public static let secondaryActionTriggered = MessengerInputEvents(rawValue: 0x01000000)
+    public static let imageButtonActionTriggered = MessengerInputEvents(rawValue: 0x01000000)
     
     public init(rawValue: UInt) {
         self.rawValue = rawValue
