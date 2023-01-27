@@ -103,5 +103,6 @@ public struct MSGIMessageStyle: MSGMessengerStyle {
     
     /// The text color used by footer views
     public var footerTextColor: UIColor = UIColor(hue:0.67, saturation:0.03, brightness:0.58, alpha:1.00)
-    
+
+    public init() {}
 }
