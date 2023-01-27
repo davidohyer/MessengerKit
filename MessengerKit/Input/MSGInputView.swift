@@ -115,7 +115,8 @@ open class MSGInputView: UIControl {
     }
     
     @objc func imageButtonTapped(_ sender: UIButton) {
-        sendActions(for: .secondaryActionTriggered)
+        let controlEvent = UIControl.Event(rawValue: MessengerInputEvents.secondaryActionTriggered.rawValue)
+        sendActions(for: controlEvent)
     }
     
     @discardableResult open override func resignFirstResponder() -> Bool {
