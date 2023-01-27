@@ -160,9 +160,7 @@ open class MSGMessengerViewController: UIViewController {
     
         messageInputView.addTarget(self, action: #selector(inputViewDidChange(inputView:)), for: .valueChanged)
         messageInputView.addTarget(self, action: #selector(inputViewPrimaryActionTriggered(inputView:)), for: .primaryActionTriggered)
-        
-        let controlEvent = UIControl.Event(rawValue: MessengerInputEvents.secondaryActionTriggered.rawValue)
-        messageInputView.addTarget(self, action: #selector(inputViewSecondaryActionTriggered(inputView:)), for: controlEvent)
+        messageInputView.addTarget(self, action: #selector(inputViewSecondaryActionTriggered(inputView:)), for: .applicationReserved)
     }
     
     open func setupCollectionView() {
