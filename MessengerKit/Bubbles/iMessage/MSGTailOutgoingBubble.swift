@@ -112,7 +112,7 @@ public class MSGTailOutgoingBubble: UITextView {
         backgroundImageView.frame = bounds
     }
     
-    func calculatedSize(in size: CGSize) -> CGSize {
+    public func calculatedSize(in size: CGSize) -> CGSize {
         return sizeThatFits(CGSize(width: size.width * 0.8, height: .infinity))
     }
     

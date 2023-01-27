@@ -87,7 +87,7 @@ class MSGTravOutgoingBubble: UITextView {
         layer.insertSublayer(gradientLayer, at: 0)
     }
     
-    func calculatedSize(in size: CGSize) -> CGSize {
+    public func calculatedSize(in size: CGSize) -> CGSize {
         return sizeThatFits(CGSize(width: size.width - 40, height: .infinity))
     }
     
