@@ -28,14 +28,9 @@ public final class MessengerKit {
     private init() { }
     
     /// Built-in styles to be used by `MSGMessengerViewController`
-    public struct Styles {
-        
+    public enum Styles {
         public static let travamigos = MSGTravamigosStyle()
-        
         public static let iMessage = MSGIMessageStyle()
-        
-        private init() { }
-        
     }
     
 }

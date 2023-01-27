@@ -136,7 +136,7 @@ extension MSGMessengerViewController: UICollectionViewDataSource, UICollectionVi
         
     }
     
-    @discardableResult open func calculateSize(for message: MSGMessage) -> CGSize {
+    @discardableResult public func calculateSize(for message: MSGMessage) -> CGSize {
         
         if let size = cachedSizes[message.id] {
             return size

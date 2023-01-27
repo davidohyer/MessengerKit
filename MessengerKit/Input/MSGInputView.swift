@@ -119,7 +119,7 @@ open class MSGInputView: UIControl {
 
 extension MSGInputView: MSGPlaceholderTextViewDelegate {
 
-    open func textViewDidChange(_ textView: UITextView) {
+    public func textViewDidChange(_ textView: UITextView) {
         sendButton.isEnabled = textView.text != ""
         let size = textView.sizeThatFits(CGSize(width: textView.bounds.size.width, height: .infinity))
         let height = size.height + 11
