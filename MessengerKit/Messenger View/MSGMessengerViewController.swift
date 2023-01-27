@@ -160,6 +160,7 @@ open class MSGMessengerViewController: UIViewController {
     
         messageInputView.addTarget(self, action: #selector(inputViewDidChange(inputView:)), for: .valueChanged)
         messageInputView.addTarget(self, action: #selector(inputViewPrimaryActionTriggered(inputView:)), for: .primaryActionTriggered)
+        messageInputView.addTarget(self, action: #selector(inputViewSecondaryActionTriggered(inputView:)), for: .secondaryActionTriggered)
     }
     
     open func setupCollectionView() {
@@ -190,7 +191,7 @@ open class MSGMessengerViewController: UIViewController {
     @objc open dynamic func inputViewDidChange(inputView: MSGInputView) { }
     
     @objc open dynamic func inputViewPrimaryActionTriggered(inputView: MSGInputView) { }
-    
+    @objc open dynamic func inputViewSecondaryActionTriggered(inputView: MSGInputView) { }
     
     // MARK: - Keyboard
     
@@ -239,4 +240,8 @@ open class MSGMessengerViewController: UIViewController {
         
     }
     
+}
+
+extension UIControl.Event {
+    static var secondaryActionTriggered: UIControl.Event { return UIControl.Event(rawValue: 0b0001 << 24) }
 }

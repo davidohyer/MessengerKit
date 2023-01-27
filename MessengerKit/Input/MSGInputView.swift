@@ -17,6 +17,7 @@ open class MSGInputView: UIControl {
 
     /// The send button
     @IBOutlet open var sendButton: UIButton!
+    @IBOutlet open var imageButton: UIButton?
 
     /// The height constraint to be modified as required.
     /// This should not be set manually but instead use the `minHeight` and `maxHeight` properties.
@@ -58,6 +59,7 @@ open class MSGInputView: UIControl {
         didSet {
             textView.tintColor = tintColor
             sendButton.tintColor = tintColor
+            imageButton?.tintColor = tintColor
         }
     }
     
@@ -84,6 +86,7 @@ open class MSGInputView: UIControl {
         addHeightConstraints()
         setupTextView()
         setupSendButton()
+        setupImageButton()
     }
 
     private func addHeightConstraints() {
@@ -100,11 +103,19 @@ open class MSGInputView: UIControl {
         sendButton.isEnabled = false
         sendButton.addTarget(self, action: #selector(sendButtonTapped(_:)), for: .touchUpInside)
     }
+    
+    private func setupImageButton() {
+        imageButton?.addTarget(self, action: #selector(imageButtonTapped(_:)), for: .touchUpInside)
+    }
 
     @objc func sendButtonTapped(_ sender: UIButton) {
         message = textView.text
         textView.text = nil
         sendActions(for: .primaryActionTriggered)
+    }
+    
+    @objc func imageButtonTapped(_ sender: UIButton) {
+        sendActions(for: .secondaryActionTriggered)
     }
     
     @discardableResult open override func resignFirstResponder() -> Bool {
